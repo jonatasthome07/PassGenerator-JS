@@ -8,8 +8,7 @@
 
 html, body{
     height: auto;
-    min-height: 100vh;
-
+    min-height: 95.5vh;
 }
 
 html{
@@ -48,4 +47,52 @@ input:focus{
     margin-bottom: 1.5rem;
     color: #fff;
     word-spacing: 50rem;
+}
+
+#register-form{
+    background-color: #fdfdfd;
+    padding: 2rem;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+#register-form h2{
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2.2rem;
+}
+
+#register-form p{
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #aaa;
+    font-size: .8rem;
+}
+
+.form-control{
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-control label{
+    font-weight: bold;
+    margin-bottom: 1.6rem;
+}
+
+.form-control input{
+    border: none;
+    border-bottom: 1px solid #aaa;
+    padding: .6rem 0;
+}
+
+#generate-password{
+    font-weight: bold;
+    cursor: pointer;
+    transition: .4s;
+}
+
+#generate-password:hover{
+    color: #0099ff;
 }
