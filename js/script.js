@@ -69,3 +69,14 @@ openPasswordContainer.addEventListener("click", ()=>{
 generatePasswordButton.addEventListener("click", ()=>{
     generatePassword(LetterLowerCase, LetterUpperCase, getSymbols, getNumber)
 })
+
+copyPassword.addEventListener("click", (e)=>{
+    e.preventDefault()
+    const pass = generatedPasswordElement.querySelector("h4").innerText
+    navigator.clipboard.writeText(pass).then(()=>{
+        copyPassword.innerHTML = "Senha copiada com sucesso!"
+        setTimeout(()=>{
+            copyPassword.innerHTML = "Copiar"
+        }, 1000)
+    })
+})
