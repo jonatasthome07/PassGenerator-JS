@@ -1,6 +1,13 @@
 //Elements
 const generatePasswordButton = document.querySelector("#generate-password")
 const generatedPasswordElement = document.querySelector("#generated-password")
+const openPasswordContainer = document.querySelector("#open-generate-password")
+const passwordOptions = document.querySelector("#generate-options")
+const lettersInput = document.querySelector("#letters")
+const symbolsInput = document.querySelector("#symbols")
+const numbersInput = document.querySelector("#numbers")
+const quantityInput = document.querySelector("#length")
+const copyPassword = document.querySelector("#copy-password")
 
 //Functions
 const symbols = "@#$%&?!\|><{}[]*()-_+=~^'¨'"
@@ -23,9 +30,25 @@ const getNumber = () => {
 
 const generatePassword = (LetterLowerCase, LetterUpperCase, getSymbols, getNumber) =>{
     let password = ""
-    const passwordlength = 10
+    const passwordlength = quantityInput.value 
 
-    const generators = [LetterLowerCase, LetterUpperCase, getSymbols, getNumber]
+    const generators = []
+
+    if (lettersInput.checked){
+        generators.push(LetterLowerCase, LetterUpperCase)
+    }
+
+    if (symbolsInput.checked){
+        generators.push(getSymbols)
+    }
+
+    if (numbersInput.checked){
+        generators.push(getNumber)
+    }
+
+    if (generators.length === 0){
+        return;
+    }
 
     for (i = 0; i < passwordlength; i = i + generators.length) {
         generators.forEach(()=>{
@@ -39,6 +62,10 @@ const generatePassword = (LetterLowerCase, LetterUpperCase, getSymbols, getNumbe
 }
 
 //Events
-generatePasswordButton.addEventListener("click",()=>{
+openPasswordContainer.addEventListener("click", ()=>{
+    passwordOptions.classList.toggle("hide");
+})
+
+generatePasswordButton.addEventListener("click", ()=>{
     generatePassword(LetterLowerCase, LetterUpperCase, getSymbols, getNumber)
 })
